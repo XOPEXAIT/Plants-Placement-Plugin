@@ -1,0 +1,9 @@
+name: PlantsPlacement
+version: '1.0-SNAPSHOT'
+main: com.illia.plantsPlacement.MainPlantsPlacement
+api-version: '1.21'
+authors: [ Illia ]
+description: Paper plugin for totem, that saves from death in a void
+commands:
+  plantsplacement:
+    description: Allows to place plants on different blocks
