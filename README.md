@@ -11,4 +11,11 @@ This feature is disabled by default, to enable this use command:
 /plantsplacement  
 To disable this, use this command again.
 
-### 
+### Download
+
+| Version | Compatibility | Download link                        |
+|:-------:|:-------------:|--------------------------------------|
+| 1.0.0   | 1.21.3        | [Завантажити]()   |
+| 1.0.0   | 1.21.1        | [Завантажити](https://example.com)   |
+| 1.0.0   | 1.20.4        | [Завантажити](https://example.com)   |
+
