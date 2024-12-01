@@ -15,7 +15,7 @@ To disable this, use this command again.
 
 | Version | Compatibility | Download link                                   |
 |:-------:|:-------------:|--------------------------------------           |
-| 1.0.0   | 1.21.3        | [Завантажити](PlantsPlacement-1.0 1.21.3.jar)   |
+| 1.0.0   | 1.21.3        | [Завантажити]()   |
 | 1.0.0   | 1.21.1        | [Завантажити](https://example.com)              |
 | 1.0.0   | 1.20.4        | [Завантажити](https://example.com)              |
 
