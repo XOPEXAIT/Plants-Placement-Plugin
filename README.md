@@ -1,5 +1,4 @@
-![Logo](https://i.imgur.com/nIsmRzw.png)
-
+![Logo](https://i.imgur.com/nIsmRzw.png)  
 A paper plugin for Minecraft to place various plants on any blocks
 
 ### Description
@@ -17,5 +16,11 @@ To disable this, use this command again.
 |:-------:|:-------------:|-------------------------------------------------------------------------------------------------------------------------------|
 | 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.21.3.jar)   |
 | 1.0.0   | 1.21.1        | [Download 1.21.1](https://example.com)                                                                                        |
+| 1.0.0   | 1.21          | [Download 1.21](https://example.com)                                                                                          |
 | 1.0.0   | 1.20.4        | [Download 1.20.4](https://example.com)                                                                                        |
 
+The Plugin should also work on older versions
+
+### Bug reports / Suggestions
+If there is any bugs or you want to suggest me something to improve this plugin let me know in my discord!  
+@xopexait
