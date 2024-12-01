@@ -22,5 +22,5 @@ To disable this, use this command again.
 The Plugin should also work on older versions
 
 ### Bug reports / Suggestions
-If there is any bugs or you want to suggest me something to improve this plugin let me know in my discord!  
+If there are any bugs or you want to suggest me something to improve this plugin let me know in my discord!  
 @xopexait
