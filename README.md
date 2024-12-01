@@ -1,9 +1,6 @@
-<div align="center">
-  <img src="https://i.imgur.com/nIsmRzw.png" alt="Logo">
-</div>
-<div align="center">
-  A paper plugin for Minecraft to place various plants on any blocks
-</div>
+![Logo](https://i.imgur.com/nIsmRzw.png)
+
+A paper plugin for Minecraft to place various plants on any blocks
 
 ### Description
 Plants Placement Plugin adds a command, that allows you to place various plants on any blocks, for example sand. 
