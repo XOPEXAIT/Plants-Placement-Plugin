@@ -13,9 +13,9 @@ To disable this, use this command again.
 
 ### Download
 
-| Version | Compatibility | Download link                                                                                                       |
-|:-------:|:-------------:|---------------------------------------------------------------------------------------------------------------------|
-| 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/blob/main/PlantsPlacement-1.0%201.21.3.jar)   |
-| 1.0.0   | 1.21.1        | [Download 1.21.1](https://example.com)                                                                              |
-| 1.0.0   | 1.20.4        | [Download 1.20.4](https://example.com)                                                                              |
+| Version | Compatibility | Download link                                                                                                                 |
+|:-------:|:-------------:|-------------------------------------------------------------------------------------------------------------------------------|
+| 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.21.3.jar)   |
+| 1.0.0   | 1.21.1        | [Download 1.21.1](https://example.com)                                                                                        |
+| 1.0.0   | 1.20.4        | [Download 1.20.4](https://example.com)                                                                                        |
 
