@@ -12,12 +12,12 @@ To disable this, use this command again.
 
 ### Download
 
-| Version | Compatibility | Download link                                                                                                                 |
-|:-------:|:-------------:|-------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.21.3.jar)   |
-| 1.0.0   | 1.21.1        | [Download 1.21.1](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.21.1.jar)   |
-| 1.0.0   | 1.21          | [Download 1.21](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.21.jar)       |
-| 1.0.0   | 1.20.4        | [Download 1.20.4](https://github.com/XOPEXAIT/Plants-Placement-Plugin/raw/refs/heads/main/PlantsPlacement-1.0%201.20.4.jar)   |
+| Version | Compatibility | Download link                                                                                                                                       |
+|:-------:|:-------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.3.jar)   |
+| 1.0.0   | 1.21.1        | [Download 1.21.1](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.1.jar)   |
+| 1.0.0   | 1.21          | [Download 1.21](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.jar)       |
+| 1.0.0   | 1.20.4        | [Download 1.20.4](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.20.4.jar)   |
 
 The Plugin should also work on older versions
 
