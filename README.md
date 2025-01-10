@@ -14,7 +14,7 @@ To disable this, use this command again.
 
 | Version | Compatibility | Download link                                                                                                                                       |
 |:-------:|:-------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0.1   | 1.21.4        | [Download 1.21.4](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.4.jar)   |
+| 1.0.1   | 1.21.4        | [Download 1.21.4]([https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.4.jar](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin-v1.0.1/Plants.Placement.Plugin-1.0.1.1.21.4.jar))   |
 | 1.0.0   | 1.21.3        | [Download 1.21.3](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.3.jar)   |
 | 1.0.0   | 1.21.1        | [Download 1.21.1](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.1.jar)   |
 | 1.0.0   | 1.21          | [Download 1.21](https://github.com/XOPEXAIT/Plants-Placement-Plugin/releases/download/plants-placement-plugin/PlantsPlacement-1.0.0.1.21.jar)       |
