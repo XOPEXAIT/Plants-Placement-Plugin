@@ -8,31 +8,37 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlantsPlacementCommand implements CommandExecutor {
+
+    private final Map<String, Boolean> playerPlantsPlacement = new HashMap<>();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Цю команду можуть виконувати тільки гравці!");
+            return false;
+        }
+
         Player player = (Player) sender;
+
         if (!hasWealthPermission(player)) {
             sender.sendMessage(ChatColor.RED + "Вам потрібна підписка " + ChatColor.AQUA + "Wealth " + ChatColor.RED + "для цього!");
             return false;
         }
 
-        allowPlantsPlacement = !allowPlantsPlacement;
+        boolean currentState = playerPlantsPlacement.getOrDefault(player.getName(), false);
+        playerPlantsPlacement.put(player.getName(), !currentState);
 
-        if (allowPlantsPlacement) {
-            player.sendMessage("Розміщення рослин на будь які блоки ввімкнено");
+        if (!currentState) {
+            player.sendMessage("Розміщення рослин на будь-які блоки ввімкнено.");
         } else {
-            player.sendMessage("Розміщення рослин на будь які блоки вимкнено.");
+            player.sendMessage("Розміщення рослин на будь-які блоки вимкнено.");
         }
 
         return true;
-    }
-
-    private boolean allowPlantsPlacement = false;
-
-    public boolean isAllowPlantsPlacement() {
-        return allowPlantsPlacement;
     }
 
     public static boolean hasWealthPermission(Player player) {
@@ -45,4 +51,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
         return false;
     }
 
+    public boolean isAllowPlantsPlacement(Player player) {
+        return playerPlantsPlacement.getOrDefault(player.getName(), false);
+    }
 }

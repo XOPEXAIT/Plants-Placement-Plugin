@@ -79,7 +79,7 @@ public class PlantsPlacementListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (!pluginCommandPlantsPlacement.isAllowPlantsPlacement()) return;
+        if (!pluginCommandPlantsPlacement.isAllowPlantsPlacement(event.getPlayer())) return;
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block clickedBlock = event.getClickedBlock();
             Player player = event.getPlayer();
