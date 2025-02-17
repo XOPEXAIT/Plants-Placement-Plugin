@@ -44,7 +44,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
     public static boolean hasCommandPermission(Player player) {
         for (PermissionAttachmentInfo permissionInfo : player.getEffectivePermissions()) {
             String permission = permissionInfo.getPermission();
-            if (permission.startsWith("plantsplacement.use")) {
+            if (player.hasPermission("plantsplacement.use")) {
                 return true;
             }
         }
