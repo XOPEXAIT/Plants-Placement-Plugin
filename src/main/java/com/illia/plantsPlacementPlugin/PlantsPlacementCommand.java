@@ -24,7 +24,10 @@ public class PlantsPlacementCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-
+        if (!hasCommandPermission(player)) {
+            sender.sendMessage(ChatColor.RED + "Вам потрібна підписка " + ChatColor.AQUA + "Wealth " + ChatColor.RED + "для цього!");
+            return false;
+        }
 
         boolean currentState = playerPlantsPlacement.getOrDefault(player.getName(), false);
         playerPlantsPlacement.put(player.getName(), !currentState);
