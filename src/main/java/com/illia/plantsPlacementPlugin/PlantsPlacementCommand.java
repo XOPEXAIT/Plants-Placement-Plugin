@@ -24,7 +24,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (!hasWealthPermission(player)) {
+        if (!hasCommandPermission(player)) {
             sender.sendMessage(ChatColor.RED + "Вам потрібна підписка " + ChatColor.AQUA + "Wealth " + ChatColor.RED + "для цього!");
             return false;
         }
@@ -41,10 +41,10 @@ public class PlantsPlacementCommand implements CommandExecutor {
         return true;
     }
 
-    public static boolean hasWealthPermission(Player player) {
+    public static boolean hasCommandPermission(Player player) {
         for (PermissionAttachmentInfo permissionInfo : player.getEffectivePermissions()) {
             String permission = permissionInfo.getPermission();
-            if (permission.startsWith("Wealth")) {
+            if (permission.startsWith("plantsplacement.use")) {
                 return true;
             }
         }
