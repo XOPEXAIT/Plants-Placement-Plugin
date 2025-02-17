@@ -11,8 +11,9 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
         PlantsPlacementCommand pluginCommandPlantsPlacement = new PlantsPlacementCommand();
         Objects.requireNonNull(this.getCommand("plantsplacement")).setExecutor(pluginCommandPlantsPlacement);
-        getServer().getPluginManager().registerEvents(new PlantsPlacementListener(pluginCommandPlantsPlacement), this);
+        getServer().getPluginManager().registerEvents(new PlantsPlacementListener(pluginCommandPlantsPlacement, this), this);
 
+        getLogger().info("PlantsPlacementPlugin is enabled!");
     }
 
     @Override

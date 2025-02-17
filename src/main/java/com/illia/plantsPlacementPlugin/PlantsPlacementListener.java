@@ -8,16 +8,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.EnumSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class PlantsPlacementListener implements Listener {
     private final PlantsPlacementCommand pluginCommandPlantsPlacement;
+    private final Main main;
 
-    public PlantsPlacementListener(PlantsPlacementCommand pluginCommandPlantsPlacement) {
+    public PlantsPlacementListener(PlantsPlacementCommand pluginCommandPlantsPlacement, Main main) {
         this.pluginCommandPlantsPlacement = pluginCommandPlantsPlacement;
+        this.main = main;
     }
 
     private static final Set<Material> PLANT_MATERIALS = EnumSet.of(
@@ -83,15 +87,17 @@ public class PlantsPlacementListener implements Listener {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block clickedBlock = event.getClickedBlock();
             Player player = event.getPlayer();
-
-            if (PLANT_MATERIALS.contains(player.getInventory().getItemInMainHand().getType())) {
-                Block blockUnder = clickedBlock.getRelative(BlockFace.UP);
-                blockUnder.setType(player.getInventory().getItemInMainHand().getType());
-                if (player.getGameMode() == GameMode.SURVIVAL) {
-                    player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
-                    event.setCancelled(true);
+            Block blockUnder = clickedBlock.getRelative(BlockFace.UP);
+            if (blockUnder.getType() == Material.AIR || blockUnder.getType() == Material.CAVE_AIR) {
+                if (PLANT_MATERIALS.contains(player.getInventory().getItemInMainHand().getType())) {
+                    blockUnder.setType(player.getInventory().getItemInMainHand().getType());
+                    if (player.getGameMode() == GameMode.SURVIVAL) {
+                        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
+                        event.setCancelled(true);
+                    }
                 }
             }
         }
     }
+
 }
