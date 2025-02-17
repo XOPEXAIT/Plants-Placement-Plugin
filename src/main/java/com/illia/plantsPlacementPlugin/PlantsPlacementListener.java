@@ -100,4 +100,11 @@ public class PlantsPlacementListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onBlockPhysics(BlockPhysicsEvent event) {
+        if (PLANT_MATERIALS.contains(event.getBlock().getType()) && event.getBlock().getRelative(BlockFace.DOWN).isSolid()) {
+            event.setCancelled(true);
+        }
+    }
+
 }
