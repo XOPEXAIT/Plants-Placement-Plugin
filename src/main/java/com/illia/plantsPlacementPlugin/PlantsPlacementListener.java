@@ -1,6 +1,7 @@
 package com.illia.plantsPlacementPlugin;
 
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -12,17 +13,10 @@ import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.logging.Logger;
 
 public class PlantsPlacementListener implements Listener {
-    private final PlantsPlacementCommand pluginCommandPlantsPlacement;
-    private final Main main;
-
-    public PlantsPlacementListener(PlantsPlacementCommand pluginCommandPlantsPlacement, Main main) {
-        this.pluginCommandPlantsPlacement = pluginCommandPlantsPlacement;
-        this.main = main;
-    }
 
     private static final Set<Material> PLANT_MATERIALS = EnumSet.of(
             Material.SHORT_GRASS,
@@ -81,9 +75,11 @@ public class PlantsPlacementListener implements Listener {
             Material.HANGING_ROOTS
     );
 
+    public Set<Location> authorizedPlantBlocks = new HashSet<>();
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (!pluginCommandPlantsPlacement.isAllowPlantsPlacement(event.getPlayer())) return;
+        if (!PlantsPlacementCommand.isAllowPlantsPlacement(event.getPlayer())) return;
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block clickedBlock = event.getClickedBlock();
             Player player = event.getPlayer();
@@ -91,12 +87,20 @@ public class PlantsPlacementListener implements Listener {
             if (blockUnder.getType() == Material.AIR || blockUnder.getType() == Material.CAVE_AIR) {
                 if (PLANT_MATERIALS.contains(player.getInventory().getItemInMainHand().getType())) {
                     blockUnder.setType(player.getInventory().getItemInMainHand().getType());
+                    authorizedPlantBlocks.add(blockUnder.getLocation());
                     if (player.getGameMode() == GameMode.SURVIVAL) {
                         player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
                         event.setCancelled(true);
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onBlockPhysics(BlockPhysicsEvent event) {
+        if (authorizedPlantBlocks.contains(event.getBlock().getLocation())) {
+            event.setCancelled(true);
         }
     }
 

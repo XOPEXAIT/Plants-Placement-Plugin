@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class PlantsPlacementCommand implements CommandExecutor {
 
-    private final Map<String, Boolean> playerPlantsPlacement = new HashMap<>();
+    private static final Map<String, Boolean> playerPlantsPlacement = new HashMap<>();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
@@ -51,7 +51,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
         return false;
     }
 
-    public boolean isAllowPlantsPlacement(Player player) {
+    public static boolean isAllowPlantsPlacement(Player player) {
         return playerPlantsPlacement.getOrDefault(player.getName(), false);
     }
 }
