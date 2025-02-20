@@ -1,5 +1,5 @@
 name: PlantsPlacementPlugin
-version: '1.0.3'
+version: '1.0.4'
 main: com.illia.plantsPlacementPlugin.Main
 api-version: '1.21'
 authors: [ Illia ]
