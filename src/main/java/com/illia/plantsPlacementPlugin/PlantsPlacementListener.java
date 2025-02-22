@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockCanBuildEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -80,23 +81,13 @@ public class PlantsPlacementListener implements Listener {
     );
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event) {
+    public void onBlockPlace(BlockCanBuildEvent event) {
+        if (event.getPlayer() == null) return;
         if (!PlantsPlacementCommand.isAllowPlantsPlacement(event.getPlayer())) return;
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            Block clickedBlock = event.getClickedBlock();
-            Player player = event.getPlayer();
-            Block blockUnder = clickedBlock.getRelative(BlockFace.UP);
-            if (blockUnder.getType() == Material.AIR || blockUnder.getType() == Material.CAVE_AIR) {
-                if (PLANT_MATERIALS.contains(player.getInventory().getItemInMainHand().getType())) {
-                    blockUnder.setType(player.getInventory().getItemInMainHand().getType());
-                    main.getAuthorizedPlantBlocks().add(blockUnder.getLocation());
-                    main.savePlantsData();
-                    if (player.getGameMode() == GameMode.SURVIVAL) {
-                        player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
-                        event.setCancelled(true);
-                    }
-                }
-            }
+        if (PLANT_MATERIALS.contains(event.getMaterial())) {
+            event.setBuildable(true);
+            main.getAuthorizedPlantBlocks().add(event.getBlock().getLocation());
+            main.savePlantsData();
         }
     }
 
