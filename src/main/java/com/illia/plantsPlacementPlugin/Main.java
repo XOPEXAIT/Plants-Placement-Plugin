@@ -12,12 +12,15 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public final class Main extends JavaPlugin {
 
     private Set<Location> authorizedPlantBlocks = new HashSet<>();
     private File configFile;
     private FileConfiguration config;
+    private final Lock configLock = new ReentrantLock();
 
     public Set<Location> getAuthorizedPlantBlocks() {
         return authorizedPlantBlocks;
@@ -68,20 +71,27 @@ public final class Main extends JavaPlugin {
     }
 
     public void savePlantsData() {
-        config.set("plants", null);
-        for (Location location : authorizedPlantBlocks) {
-            String key = location.getWorld().getName() + ","
-                    + location.getBlockX() + ","
-                    + location.getBlockY() + ","
-                    + location.getBlockZ();
-            config.set("plants." + key, true);
-        }
+        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+            configLock.lock();
 
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            config.set("plants", null);
+            for (Location location : authorizedPlantBlocks) {
+                String key = location.getWorld().getName() + ","
+                        + location.getBlockX() + ","
+                        + location.getBlockY() + ","
+                        + location.getBlockZ();
+                config.set("plants." + key, true);
+            }
+
+            try {
+                config.save(configFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            configLock.unlock();
+        });
+
     }
 
 }
