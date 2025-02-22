@@ -107,4 +107,14 @@ public class PlantsPlacementListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        Block block = event.getBlock();
+        Location location = block.getLocation();
+        if (main.getAuthorizedPlantBlocks().contains(location)) {
+            main.getAuthorizedPlantBlocks().remove(location);
+            main.savePlantsDataAsync();
+        }
+    }
+
 }
