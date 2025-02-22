@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -42,13 +41,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
     }
 
     public static boolean hasCommandPermission(Player player) {
-        for (PermissionAttachmentInfo permissionInfo : player.getEffectivePermissions()) {
-            String permission = permissionInfo.getPermission();
-            if (player.hasPermission("plantsplacement.use")) {
-                return true;
-            }
-        }
-        return false;
+        return player.hasPermission("plantsplacement.use");
     }
 
     public static boolean isAllowPlantsPlacement(Player player) {
