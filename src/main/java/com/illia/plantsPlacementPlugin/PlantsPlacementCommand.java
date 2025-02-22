@@ -5,7 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -17,12 +16,10 @@ public class PlantsPlacementCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ChatColor.RED + "Цю команду можуть виконувати тільки гравці!");
             return false;
         }
-
-        Player player = (Player) sender;
 
         if (!hasCommandPermission(player)) {
             sender.sendMessage(ChatColor.RED + "Вам потрібна підписка " + ChatColor.AQUA + "Wealth " + ChatColor.RED + "для цього!");
@@ -42,13 +39,7 @@ public class PlantsPlacementCommand implements CommandExecutor {
     }
 
     public static boolean hasCommandPermission(Player player) {
-        for (PermissionAttachmentInfo permissionInfo : player.getEffectivePermissions()) {
-            String permission = permissionInfo.getPermission();
-            if (player.hasPermission("plantsplacement.use")) {
-                return true;
-            }
-        }
-        return false;
+        return player.hasPermission("plantsplacement.use");
     }
 
     public static boolean isAllowPlantsPlacement(Player player) {

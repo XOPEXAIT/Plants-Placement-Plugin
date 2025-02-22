@@ -1,6 +1,7 @@
 package com.illia.plantsPlacementPlugin;
 
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -8,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -90,7 +92,7 @@ public class PlantsPlacementListener implements Listener {
                 if (PLANT_MATERIALS.contains(player.getInventory().getItemInMainHand().getType())) {
                     blockUnder.setType(player.getInventory().getItemInMainHand().getType());
                     main.getAuthorizedPlantBlocks().add(blockUnder.getLocation());
-                    main.savePlantsData();
+                    main.savePlantsDataAsync();
                     if (player.getGameMode() == GameMode.SURVIVAL) {
                         player.getInventory().getItemInMainHand().setAmount(player.getInventory().getItemInMainHand().getAmount() - 1);
                         event.setCancelled(true);

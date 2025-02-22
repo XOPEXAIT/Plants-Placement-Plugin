@@ -6,6 +6,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        savePlantsData();
     }
 
     private void loadPlantsData() {
@@ -53,7 +53,7 @@ public final class Main extends JavaPlugin {
                     String worldName = parts[0];
                     World world = Bukkit.getWorld(worldName);
                     if (world == null) {
-                        getLogger().warning("Світ " + worldName + " не знайдено для локації " + key);
+                        getLogger().warning("World " + worldName + " not found for location " + key);
                         continue;
                     }
                     int x = Integer.parseInt(parts[1]);
@@ -67,21 +67,23 @@ public final class Main extends JavaPlugin {
         }
     }
 
-    public void savePlantsData() {
-        config.set("plants", null);
-        for (Location location : authorizedPlantBlocks) {
-            String key = location.getWorld().getName() + ","
-                    + location.getBlockX() + ","
-                    + location.getBlockY() + ","
-                    + location.getBlockZ();
-            config.set("plants." + key, true);
+    public void savePlantsDataAsync() {
+        final FileConfiguration configCopy = new YamlConfiguration();
+        configCopy.set("plants", null);
+        for (Location loc : authorizedPlantBlocks) {
+            String key = loc.getWorld().getName() + "," + loc.getBlockX() + "," + loc.getBlockY() + "," + loc.getBlockZ();
+            configCopy.set("plants." + key, true);
         }
-
-        try {
-            config.save(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                try {
+                    configCopy.save(configFile);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.runTaskAsynchronously(this);
     }
 
 }
