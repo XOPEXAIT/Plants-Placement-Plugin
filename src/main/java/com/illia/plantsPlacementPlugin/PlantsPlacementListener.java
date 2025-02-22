@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockCanBuildEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -87,6 +88,14 @@ public class PlantsPlacementListener implements Listener {
         if (PLANT_MATERIALS.contains(event.getMaterial())) {
             event.setBuildable(true);
             main.getAuthorizedPlantBlocks().add(event.getBlock().getLocation());
+            main.savePlantsData();
+        }
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        if (main.getAuthorizedPlantBlocks().contains(event.getBlock().getLocation())) {
+            main.getAuthorizedPlantBlocks().remove(event.getBlock().getLocation());
             main.savePlantsData();
         }
     }
